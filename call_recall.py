@@ -7,7 +7,7 @@ import requests
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-executor = ThreadPoolExecutor(max_workers=60)
+executor = ThreadPoolExecutor(max_workers=90)
 
 logging.basicConfig(
     format='%(asctime)s : %(levelname)s : %(message)s',
