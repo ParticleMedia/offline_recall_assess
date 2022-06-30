@@ -14,11 +14,8 @@ function merge_test_recall_result() {
       rm ${merge_file}
     fi
     # 取出最新的TOTAL_NEED_FILE_NUM份文件, merge后scp到hadoop机器上
-#    echo $(ls -t ${SCRIPT_ROOT_DIR}/${RECALL_RESULT_FOLDER}/*_recall_result.txt | head -n $TOTAL_NEED_FILE_NUM) > ${SCRIPT_ROOT_DIR}/${RECALL_RESULT_FOLDER}/input_file.txt
-#    cat $(ls -t ${SCRIPT_ROOT_DIR}/${RECALL_RESULT_FOLDER}/*_recall_result.txt | head -n $TOTAL_NEED_FILE_NUM) | python ${SCRIPT_ROOT_DIR}/merge_file.py --output_file $merge_file
     for file in $(ls -t ${SCRIPT_ROOT_DIR}/${RECALL_RESULT_FOLDER}/*_recall_result.txt | head -n $TOTAL_NEED_FILE_NUM); do
       echo $file >> ${SCRIPT_ROOT_DIR}/${RECALL_RESULT_FOLDER}/input_file.txt
-#      cat $file >> $merge_file
     done
     python ${SCRIPT_ROOT_DIR}/merge_file.py --output_file $merge_file --input_files ${SCRIPT_ROOT_DIR}/${RECALL_RESULT_FOLDER}/input_file.txt
     rm ${SCRIPT_ROOT_DIR}/${RECALL_RESULT_FOLDER}/input_file.txt
