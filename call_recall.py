@@ -15,7 +15,7 @@ logging.basicConfig(
 
 
 def thread_func(line, url):
-    result = requests.get(url).json()
+    result = requests.get(url, stream=True).json()
     recall_docids = [vaule['docid'] for vaule in result['documents']]
     return f"{line}\t{' '.join(recall_docids)}"
 
